@@ -18,7 +18,7 @@ class _sucesspageState extends State<sucesspage> {
         child: Column(
           children: [
 
-            Text("sucess",style: TextStyle(fontSize: 120)),
+            Text("sucess1",style: TextStyle(fontSize: 120)),
             FloatingActionButton(onPressed: ()async{
               await GoogleSignIn().signOut();
               await FirebaseAuth.instance.signOut();
