@@ -21,10 +21,12 @@ class _googleauthenticationState extends State<googleauthentication> {
 
      var creditial = GoogleAuthProvider.credential(accessToken: googleSignInAuthentication.accessToken,idToken: googleSignInAuthentication.idToken);
 
+
      UserCredential user = await FirebaseAuth.instance.signInWithCredential(creditial);
 
      if(user !=  null){
-     Navigator.push(context, MaterialPageRoute(builder: (context) => sucesspage(),));
+
+       Navigator.push(context, MaterialPageRoute(builder: (context) => sucesspage(),));
 
      }
 
@@ -34,16 +36,48 @@ class _googleauthenticationState extends State<googleauthentication> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("INTERSTELLAR",style: TextStyle(color: Colors.purple,fontSize: 33),)),
       body: Center(
-        child: InkWell(
-          onTap: (){
-            signInWithGoogle();
-          },
-          child: Image(
-            image: NetworkImage('https://blog.hubspot.com/hubfs/image8-2.jpg',scale: 20),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: TextField(
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius:BorderRadius.only()),label: Text("email or phone")),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: TextField(
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius:BorderRadius.only()),label: Text("password",selectionColor: Colors.red,)),cursorColor: Colors.red,
+
+              ),
+            ),
+            InkWell(
+              onTap: (){
+                signInWithGoogle();
+              },
+
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image(
+                  image: NetworkImage('https://blog.hubspot.com/hubfs/image8-2.jpg',scale: 20,),
+
+
+                ),
+              ),
+
+
+
+            ),
+          ],
         ),
+
       ),
+
     );
   }
 }
